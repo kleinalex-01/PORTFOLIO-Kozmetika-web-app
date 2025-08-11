@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './components/Home'
+import Szolgaltatasok from './components/Szolgaltatasok'
+import Arckezelesek from './components/services/Arckezelesek'
+import Mikrotus from './components/services/Mikrotus'
+import Gyantazas from './components/services/Gyantazas'
+import Muszempilla from './components/services/Muszempilla'
+import Smink from './components/services/Smink'
+import Mukorom from './components/services/Mukorom'
+import Lezeres from './components/services/Lezeres'
+import Egyeb from './components/services/Egyeb'
+import Arak from './components/Arak'
+import Galeria from './components/Galeria'
+import Kapcsolat from './components/Kapcsolat'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <Navbar />
+      
+      {/* Main Content */}
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/szolgaltatasok" element={<Szolgaltatasok />} />
+          <Route path="/szolgaltatasok/arckezelesek" element={<Arckezelesek />} />
+          <Route path="/szolgaltatasok/mikrotus" element={<Mikrotus />} />
+          <Route path="/szolgaltatasok/gyantazas" element={<Gyantazas />} />
+          <Route path="/szolgaltatasok/muszempilla" element={<Muszempilla />} />
+          <Route path="/szolgaltatasok/smink" element={<Smink />} />
+          <Route path="/szolgaltatasok/mukorom" element={<Mukorom />} />
+          <Route path="/szolgaltatasok/lezeres" element={<Lezeres />} />
+          <Route path="/szolgaltatasok/egyeb" element={<Egyeb />} />
+          <Route path="/arak" element={<Arak />} />
+          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/kapcsolat" element={<Kapcsolat />} />
+        </Routes>
+      </main>
+      
+      <Footer />
+    </div>
   )
 }
 
