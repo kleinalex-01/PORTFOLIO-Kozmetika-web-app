@@ -67,7 +67,7 @@ const Kapcsolat: React.FC = () => {
                   </div>
                   <div className="contact-item">
                     <span className="contact-icon">📍</span>
-                    <strong>Cím:</strong> 8237 Tihany, Aranyház u. 18
+                    <strong>Cím:</strong> <a href="https://maps.google.com/?q=8237+Tihany,+Aranyház+u.+18" target="_blank" rel="noopener noreferrer">8237 Tihany, Aranyház u. 18</a>
                   </div>
                 </div>
               </div>

@@ -1144,9 +1144,9 @@ p {
   }
   
   .contact-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 1.2rem;
     padding: 0.8rem;
     background: rgba(255, 255, 255, 0.5);
@@ -1155,7 +1155,10 @@ p {
   }
   
   .contact-icon {
-    display: none; /* Hide emojis on mobile for cleaner look */
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
   }
   
   .contact-item strong {
@@ -1572,10 +1575,18 @@ p {
   .price-contact-info {
     padding: 1.5rem;
     margin-top: 1.5rem;
+    text-align: center;
   }
   
   .price-contact-info h4 {
     font-size: 1.2rem;
+  }
+  
+  .price-contact-info .btn {
+    display: block;
+    margin: 1rem auto 0 auto;
+    max-width: 250px;
+    width: 100%;
   }
 }
 
@@ -1615,6 +1626,18 @@ p {
   .page-section p {
     font-size: 0.95rem;
     margin-bottom: 1.2rem;
+  }
+  
+  /* Price contact info button centering for very small screens */
+  .price-contact-info {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+  }
+  
+  .price-contact-info .btn {
+    max-width: 200px;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
   }
 }
 
