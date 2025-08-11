@@ -483,6 +483,25 @@ p {
   object-position: center;
 }
 
+/* Mobile video optimization */
+@media (max-width: 767.98px) {
+  .hero-video-placeholder video {
+    /* Optimize for mobile performance */
+    transform: translateZ(0); /* Hardware acceleration */
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Fallback background image when video fails */
+  .hero-video-placeholder {
+    background-image: url('/szalon-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
 /* Option 2: Letterbox (shows full video with black bars) - uncomment to use */
 /*
 .hero-video-placeholder video,

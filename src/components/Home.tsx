@@ -8,9 +8,21 @@ const Home: React.FC = () => {
         <div className="hero-video-container">
           {/* Video Background - you can replace with your salon video */}
           <div className="hero-video-placeholder">
-            {/* Replace this entire div with your video */}
-            <video autoPlay muted loop playsInline>
-              <source src="../public/szalon-video.mp4" type="video/mp4" />
+            {/* Video with mobile optimization */}
+            <video 
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              preload="metadata"
+              poster="/szalon-hero-image.jpg"
+              onError={(e) => {
+                // Hide video and show background image on error
+                e.currentTarget.style.display = 'none';
+              }}
+            >
+              <source src="/szalon-video.mp4" type="video/mp4" />
+              <source src="/szalon-video.webm" type="video/webm" />
               {/* Fallback for browsers that don't support video */}
               <p>Your browser doesn't support video playback.</p>
             </video>
