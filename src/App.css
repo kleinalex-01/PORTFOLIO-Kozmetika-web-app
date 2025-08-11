@@ -1096,11 +1096,11 @@ p {
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-  .service-header h1 {
+  .service-header h1, .services-header h1 {
     font-size: 2rem;
   }
   
-  .service-intro {
+  .service-intro, .services-intro {
     font-size: 1rem;
   }
   
@@ -1136,6 +1136,25 @@ p {
   .btn-custom, .btn-outline-custom {
     width: 100%;
     max-width: 280px;
+  }
+}
+
+/* Extra small devices - further heading optimization */
+@media (max-width: 480px) {
+  .service-header h1, .services-header h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .services-intro, .service-intro {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* General h1 optimization for very small screens */
+  h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.2;
   }
   
   /* Service CTA buttons alignment on mobile */
