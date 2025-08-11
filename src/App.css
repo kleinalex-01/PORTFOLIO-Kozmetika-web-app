@@ -1119,6 +1119,12 @@ p {
     max-width: 280px;
   }
   
+  /* Service CTA buttons alignment on mobile */
+  .btn-service-primary, .btn-service-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+  
   /* Contact form button should be full width on mobile */
   form .btn-custom {
     max-width: none;

@@ -39,6 +39,7 @@ const Kapcsolat: React.FC = () => {
       setFormData({ name: '', email: '', message: '' })
       setSubmitMessage('Az email kliens megnyílt az üzenettel. Köszönjük!')
     } catch (error) {
+      console.error('Contact form error:', error)
       setSubmitMessage('Hiba történt. Kérjük, próbálja újra vagy hívjon minket.')
     } finally {
       setIsSubmitting(false)
