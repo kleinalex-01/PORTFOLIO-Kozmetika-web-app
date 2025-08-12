@@ -98,8 +98,8 @@ p {
 }
 
 /* Desktop specific styles */
-@media (min-width: 992px) {
-  /* Ensure equal spacing between all 5 items */
+@media (min-width: 1200px) {
+  /* Large desktops - more spacing */
   .navbar-nav.justify-content-between {
     width: 100% !important;
   }
@@ -113,10 +113,35 @@ p {
     flex: 1 !important;
     text-align: center;
   }
+  
+  .brand-name {
+    font-size: 1.3rem;
+  }
 }
 
-/* Mobile navbar adjustments */
-@media (max-width: 991.98px) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Standard desktops */
+  .navbar-nav.justify-content-between {
+    width: 100% !important;
+  }
+  
+  .navbar-nav.justify-content-between .nav-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .navbar-brand-desktop {
+    flex: 1 !important;
+    text-align: center;
+  }
+  
+  .brand-name {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet navbar adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
   .navbar-nav {
     text-align: center;
     margin-top: 1rem;
@@ -136,7 +161,33 @@ p {
   }
 }
 
-/* Smooth navbar collapse transitions - Bootstrap-like behavior (Mobile only) */
+/* Mobile navbar adjustments */
+@media (max-width: 767.98px) {
+  .navbar-nav {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  
+  .brand-name {
+    font-size: 1rem;
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Smooth navbar collapse transitions - Bootstrap-like behavior (Mobile and Tablet) */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     overflow: hidden;
@@ -2480,8 +2531,16 @@ p {
     text-align: center;
   }
   
-  .treatment-content.reverse {
-    direction: ltr;
+  /* Reset any grid order for mobile - all elements stack normally */
+  .treatment-content .treatment-info,
+  .treatment-content .treatment-visual {
+    order: unset;
+  }
+  
+  /* Visual should come first on mobile */
+  .treatment-visual {
+    order: -1;
+    height: 300px;
   }
   
   .treatment-title {
@@ -2490,11 +2549,6 @@ p {
   
   .treatment-description {
     font-size: 1.1rem;
-  }
-  
-  .treatment-visual {
-    height: 300px;
-    order: -1;
   }
   
   .treatment-container {
@@ -2574,8 +2628,15 @@ p {
     min-height: auto;
   }
   
-  .treatment-content.reverse {
-    direction: ltr;
+  /* Reset all order properties for mobile */
+  .treatment-content .treatment-info,
+  .treatment-content .treatment-visual {
+    order: unset;
+  }
+  
+  /* Visual always comes first on mobile */
+  .treatment-visual {
+    order: -1;
   }
   
   .treatment-info {
@@ -2635,5 +2696,332 @@ p {
   .treatment-visual {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* ======================================
+   ENHANCED FEATURES CSS
+   ====================================== */
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8b5a5c 0%, #c4a484 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+}
+
+.loading-logo .salon-logo {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.loading-logo .salon-tagline {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 0.5rem 0 2rem 0;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+.loading-bar-container {
+  margin: 2rem auto;
+  position: relative;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto 1rem auto;
+}
+
+.loading-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.8));
+  border-radius: 2px;
+  transition: width 0.1s ease;
+}
+
+.loading-percentage {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.loading-text {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* Floating Action Button */
+.floating-action-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.fab-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+}
+
+.fab-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #8b5a5c, #c4a484);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(139, 90, 92, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.fab-icon:hover {
+  box-shadow: 0 12px 35px rgba(139, 90, 92, 0.6);
+}
+
+.fab-tooltip {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.fab-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.fab-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Global responsive fixes */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Click Effects - Better approach */
+.clickable-element {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-element:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.clickable-element:active {
+  transform: translateY(0px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Subtle ripple effect on click */
+.clickable-element::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clickable-element:active::after {
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.1s ease;
+}
+
+/* Ensure content stays above ripple */
+.clickable-element > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced Hover Effects */
+.treatment-info:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.treatment-visual:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive adjustments - Enhanced with more breakpoints */
+@media (max-width: 1200px) {
+  .treatment-container {
+    max-width: 1140px;
+    padding: 0 1.5rem;
+  }
+  
+  .treatment-content {
+    gap: 5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .floating-action-button {
+    bottom: 25px;
+    right: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-action-button {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .fab-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-icon {
+    font-size: 1.2rem;
+  }
+  
+  .loading-logo .salon-logo {
+    font-size: 2.5rem;
+  }
+  
+  .loading-bar {
+    width: 250px;
+  }
+  
+  /* Optimize animations for mobile performance */
+  .clickable-element {
+    transition: transform 0.2s ease;
+  }
+  
+  .clickable-element:hover {
+    transform: none; /* Disable hover on mobile */
+  }
+  
+  .clickable-element:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (max-width: 576px) {
+  .floating-action-button {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .fab-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .loading-logo .salon-logo {
+    font-size: 2rem;
+  }
+  
+  .loading-bar {
+    width: 200px;
+  }
+  
+  .fab-tooltip {
+    display: none; /* Hide tooltip on very small screens */
+  }
+  
+  /* Extra small screen optimizations */
+  .treatment-section {
+    padding: 2rem 0;
+  }
+  
+  .treatment-info {
+    padding: 2rem 1.5rem;
+  }
+  
+  .treatment-title {
+    font-size: 2rem;
+  }
+  
+  .treatment-description {
+    font-size: 0.95rem;
   }
 }
