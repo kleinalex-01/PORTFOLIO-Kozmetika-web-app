@@ -435,9 +435,18 @@ p {
 .hero-video-section {
   position: relative;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100); /* Use custom property for mobile */
   min-height: 600px;
   overflow: hidden;
   margin-top: -3rem; /* Offset main content padding */
+}
+
+/* Mobile viewport fix */
+@supports (-webkit-touch-callout: none) {
+  .hero-video-section {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
 }
 
 .hero-video-container {
