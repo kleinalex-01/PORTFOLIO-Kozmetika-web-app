@@ -435,18 +435,9 @@ p {
 .hero-video-section {
   position: relative;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100); /* Use custom property for mobile */
   min-height: 600px;
   overflow: hidden;
   margin-top: -3rem; /* Offset main content padding */
-}
-
-/* Mobile viewport fix */
-@supports (-webkit-touch-callout: none) {
-  .hero-video-section {
-    height: -webkit-fill-available;
-    min-height: -webkit-fill-available;
-  }
 }
 
 .hero-video-container {
@@ -2059,29 +2050,70 @@ p {
   }
 }
 
-/* Treatment Sections Styling */
+/* Treatment Sections Styling - Modern Staggered Layout */
 .treatment-section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 4rem 0;
 }
+
+/* Floating Background Elements */
+.treatment-section::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 90, 92, 0.03) 0%, transparent 70%);
+  top: 10%;
+  left: 10%;
+  animation: float1 20s ease-in-out infinite;
+  z-index: 1;
+}
+
+.treatment-section::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  bottom: 20%;
+  right: 15%;
+  animation: float2 25s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+  25% { transform: translateY(-20px) translateX(10px) scale(1.1); }
+  50% { transform: translateY(-10px) translateX(-15px) scale(0.9); }
+  75% { transform: translateY(15px) translateX(5px) scale(1.05); }
+}
+
+
 
 .treatment-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
+/* Staggered Content Layout */
 .treatment-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 6rem;
   align-items: center;
-  min-height: 70vh;
+  min-height: 80vh;
+  position: relative;
 }
 
 .treatment-content.reverse {
@@ -2092,23 +2124,89 @@ p {
   direction: ltr;
 }
 
+/* Glassmorphism Treatment Cards */
 .treatment-info {
-  padding: 2rem 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  box-shadow: 
+    0 20px 40px rgba(139, 90, 92, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transform: translateY(0) rotateX(0);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+/* Interactive Hover Animations */
+.treatment-info:hover {
+  transform: translateY(-15px) rotateX(5deg) scale(1.02);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 
+    0 30px 60px rgba(139, 90, 92, 0.2),
+    0 0 0 1px rgba(139, 90, 92, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(139, 90, 92, 0.2);
+}
+
+/* Glow effect on hover */
+.treatment-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(139, 90, 92, 0.05) 0%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(139, 90, 92, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.treatment-info:hover::before {
+  opacity: 1;
 }
 
 .treatment-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
   color: #8b5a5c;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.treatment-info:hover .treatment-title {
+  transform: translateY(-5px);
+  color: #7a4d4f;
 }
 
 .treatment-description {
   font-size: 1.3rem;
-  color: #666;
-  line-height: 1.6;
+  color: #555;
+  line-height: 1.7;
   margin-bottom: 2rem;
+  transition: all 0.4s ease 0.1s;
+  opacity: 0.9;
+}
+
+.treatment-info:hover .treatment-description {
+  transform: translateX(10px);
+  opacity: 1;
+  color: #444;
 }
 
 .treatment-benefits {
@@ -2123,9 +2221,15 @@ p {
 .treatment-benefits li {
   font-size: 1.1rem;
   color: #555;
-  margin-bottom: 0.8rem;
-  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
   position: relative;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.treatment-info:hover .treatment-benefits li {
+  transform: translateX(5px);
 }
 
 .treatment-benefits li::before {
@@ -2134,24 +2238,44 @@ p {
   left: 0;
   color: #8b5a5c;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
 }
 
+.treatment-info:hover .treatment-benefits li::before {
+  transform: scale(1.2);
+  color: #7a4d4f;
+}
+
+/* Glassmorphism Visual Cards */
 .treatment-visual {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 500px;
-  border-radius: 20px;
+  height: 550px;
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 15px 50px rgba(139, 90, 92, 0.25), 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transform: translateY(0) scale(1);
+  position: relative;
 }
 
 .treatment-visual:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 70px rgba(139, 90, 92, 0.35), 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-20px) scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 
+    0 35px 70px rgba(139, 90, 92, 0.25),
+    0 0 0 1px rgba(139, 90, 92, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .treatment-placeholder {
@@ -2160,10 +2284,17 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #8b5a5c;
-  background: linear-gradient(135deg, #f7f4f1 0%, #f0e8e1 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(248, 241, 235, 0.2) 100%);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.treatment-visual:hover .treatment-placeholder {
+  color: #7a4d4f;
+  transform: scale(1.1);
 }
 
 /* Individual treatment section backgrounds */
@@ -2187,20 +2318,31 @@ p {
   background: linear-gradient(135deg, #f7f5f2 0%, #eee8e3 100%);
 }
 
-/* LED Image Carousel inside the visual card */
+/* LED Image Carousel - Glassmorphism Style */
 .led-image-carousel {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 30px;
   overflow: hidden;
-  background: white;
-  box-shadow: 0 15px 50px rgba(139, 90, 92, 0.25), 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .led-image-carousel:hover {
-  box-shadow: 0 25px 70px rgba(139, 90, 92, 0.35), 0 15px 35px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 
+    0 35px 70px rgba(139, 90, 92, 0.25),
+    0 0 0 1px rgba(139, 90, 92, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .led-carousel-slide {
@@ -2227,7 +2369,7 @@ p {
   object-position: center;
 }
 
-/* LED Text Overlay */
+/* LED Text Overlay - Enhanced Glassmorphism */
 .led-text-overlay {
   position: absolute;
   top: 0;
@@ -2236,10 +2378,12 @@ p {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
   );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2247,23 +2391,43 @@ p {
   color: white;
   text-align: center;
   z-index: 5;
+  transition: all 0.4s ease;
+}
+
+.led-image-carousel:hover .led-text-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .led-overlay-title {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  letter-spacing: 2px;
-  color: #dc3545; /* Red color for GENO-LED */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  color: #dc3545;
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+
+.led-image-carousel:hover .led-overlay-title {
+  transform: translateY(-5px) scale(1.05);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .led-overlay-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   margin: 0;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
   opacity: 0.95;
+  transition: all 0.4s ease 0.1s;
+  transform: translateY(0);
+}
+
+.led-image-carousel:hover .led-overlay-subtitle {
+  transform: translateY(5px);
+  opacity: 1;
 }
 
 .led-indicators {
@@ -2390,5 +2554,86 @@ p {
   
   .treatment-content {
     gap: 1.5rem;
+  }
+}
+
+/* Mobile Responsiveness for Enhanced Glassmorphism Design */
+@media (max-width: 768px) {
+  .treatment-section {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .treatment-container {
+    padding: 0 1rem;
+  }
+  
+  .treatment-content {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    min-height: auto;
+  }
+  
+  .treatment-content.reverse {
+    direction: ltr;
+  }
+  
+  .treatment-info {
+    padding: 2.5rem 2rem;
+    transform: translateY(0) !important;
+    margin-bottom: 2rem;
+  }
+  
+  .treatment-info:hover {
+    transform: translateY(-10px) scale(1.01) !important;
+  }
+  
+  .treatment-visual {
+    height: 350px;
+    transform: translateY(0) !important;
+  }
+  
+  .treatment-visual:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+  }
+  
+  .treatment-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .treatment-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .treatment-benefits {
+    margin-bottom: 1.5rem;
+  }
+  
+  .treatment-benefits li {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .led-overlay-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .led-overlay-subtitle {
+    font-size: 1rem;
+  }
+  
+  /* Adjust glassmorphism for mobile */
+  .treatment-info {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+  
+  .treatment-visual {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
