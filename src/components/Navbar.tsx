@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
             </li>
             
             <li className="nav-item">
-              <Link className={isActive('/galeria')} to="/galeria">Termékek</Link>
+              <Link className={isActive('/termekek')} to="/termekek">Termékek</Link>
             </li>
             <li className="nav-item">
               <Link className={isActive('/kapcsolat')} to="/kapcsolat">Kapcsolat</Link>
@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
               <Link className={isActive('/arak')} to="/arak" onClick={handleLinkClick}>Árak</Link>
             </li>
             <li className="nav-item">
-              <Link className={isActive('/galeria')} to="/galeria" onClick={handleLinkClick}>Termékek</Link>
+              <Link className={isActive('/termekek')} to="/termekek" onClick={handleLinkClick}>Termékek</Link>
             </li>
             <li className="nav-item">
               <Link className={isActive('/kapcsolat')} to="/kapcsolat" onClick={handleLinkClick}>Kapcsolat</Link>

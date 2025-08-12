@@ -13,7 +13,7 @@ import Mukorom from './components/services/Mukorom.tsx'
 import Lezeres from './components/services/Lezeres.tsx'
 import Egyeb from './components/services/Egyeb.tsx'
 import Arak from './components/Arak'
-import Galeria from './components/Galeria'
+import Termekek from './components/Termekek'
 import Kapcsolat from './components/Kapcsolat'
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
           <Route path="/szolgaltatasok/lezeres" element={<Lezeres />} />
           <Route path="/szolgaltatasok/egyeb" element={<Egyeb />} />
           <Route path="/arak" element={<Arak />} />
-          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/termekek" element={<Termekek />} />
           <Route path="/kapcsolat" element={<Kapcsolat />} />
         </Routes>
       </main>

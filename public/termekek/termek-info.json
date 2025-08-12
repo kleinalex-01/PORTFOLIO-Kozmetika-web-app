@@ -1,0 +1,130 @@
+{
+  "products": [
+    {
+      "id": "afs-all-for-sensitive-serum",
+      "productName": "AFS All For Sensitive Serum",
+      "hungarianName": "Szérum érzékeny bőrre",
+      "image": "/termekek/afs-all-for-sensitive-serum.jpg",
+      "brand": "genosys"
+    },
+    {
+      "id": "eyecell-eye-contour-serum",
+      "productName": "Eyecell Eye Contour Serum",
+      "hungarianName": "Szemkörnyékápoló szérum",
+      "image": "/termekek/eyecell-eye-contour-szerum.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "hr3-matric-hair-peeling",
+      "productName": "HR3 MATRIX Scalp Peeling CSP",
+      "hungarianName": "CSP Hajpeeling",
+      "image": "/termekek/hr3-matric-haj-peeling.jpg",
+      "brand": "genosys"
+    },
+    {
+      "id": "hr3-matrix-shs-scalp-hair-shampoo",
+      "productName": "HR3 MATRIX SHS Scalp & Hair Shampoo",
+      "hungarianName": "Fejbőr és hajsampon",
+      "image": "/termekek/hr3-matrix-shs-scalp-hair-shampoo.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "intensive-blemish-balm-cream",
+      "productName": "Intensive Blemish Balm Cream",
+      "hungarianName": "Bőrtónust korrigáló krém",
+      "image": "/termekek/intensive-blemish-balm-cream.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "intensive-hydro-soothing-cream",
+      "productName": "Intensive Hydro Soothing Cream",
+      "hungarianName": "Intenzív kezelés utáni regeneráló krém",
+      "image": "/termekek/intensive-hydro-soothing-cream.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "intensive-problem-control-cream",
+      "productName": "Intensive Problem Control Cream",
+      "hungarianName": "Pattanások elleni krém",
+      "image": "/termekek/intensive-problem-control-cream.jpg",
+      "brand": "genosys"
+    },
+    {
+      "id": "intensive-problem-control-toner",
+      "productName": "Intensive Problem Control Toner",
+      "hungarianName": "Intenzíven ápoló tonik problémás bőrre",
+      "image": "/termekek/intensive-problem-control-toner.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "multi-functional-anti-wrinkle-cream",
+      "productName": "Multi Functional Anti Wrinkle Cream",
+      "hungarianName": "Multifunkcionális ránctalanító krém",
+      "image": "/termekek/multi-functional-anti-wrinkle-cream.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "multi-functional-anti-wrinkle-serum",
+      "productName": "Multi Functional Anti-Wrinkle Serum",
+      "hungarianName": "Multifunkcionális ránctalanító szérum",
+      "image": "/termekek/multi-functional-anti-wrinkle-serum.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "multi-sun-cream-spf40-pa",
+      "productName": "Multi Sun Cream SPF40/PA++",
+      "hungarianName": "Fényvédő krém",
+      "image": "/termekek/multi-sun-cream-spf40-pa.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "multi-vita-radiance-cream",
+      "productName": "Multi Vita Radiance Cream",
+      "hungarianName": "Multivitaminos ragyogásfokozó krém",
+      "image": "/termekek/multi-vita-radiance-cream.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "pcs-problem-control-serum",
+      "productName": "PCS Problem Control Serum",
+      "hungarianName": "Szérum problémás bőrre",
+      "image": "/termekek/pcs-problem-control-serum.jpg",
+      "brand": "genosys"
+    },
+    {
+      "id": "peptide-gel-mask",
+      "productName": "Peptide Gel Mask",
+      "hungarianName": "Kezelés utáni peptid gél maszk",
+      "image": "/termekek/peptid-gel-maszk.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "regenerating-collagen-mask",
+      "productName": "Intensive Repair Collagen Mask",
+      "hungarianName": "Intenzív regeneráló kollagén maszk",
+      "image": "/termekek/regeneralo-kollagen-maszk.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "seaweed-algae-mask",
+      "productName": "Soothing Bomb Sea Algae Mask",
+      "hungarianName": "Nyugtató tengeri alga maszk",
+      "image": "/termekek/tengeri-alga-maszk.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "snow-booster-tonic",
+      "productName": "Snow Booster Tonic (SBT)",
+      "hungarianName": "Tonik",
+      "image": "/termekek/snow-booster-tonic.png",
+      "brand": "genosys"
+    },
+    {
+      "id": "snow-o2-cleanser",
+      "productName": "Snow O2 Cleanser",
+      "hungarianName": "Lemosó",
+      "image": "/termekek/snow-o2-cleanser.png",
+      "brand": "genosys"
+    }
+  ]
+}
