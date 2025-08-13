@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
 
 const Home: React.FC = () => {
   const [currentLedImage, setCurrentLedImage] = useState(0)
   const [currentMicroneedleImage, setCurrentMicroneedleImage] = useState(0)
+  const { scrollYProgress } = useScroll()
   
   const ledImages = [
     '/led-treatment/genoled-1.png',
@@ -35,20 +37,66 @@ const Home: React.FC = () => {
     return () => clearInterval(interval)
   }, [microneedleImages.length])
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  }
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+
   return (
     <div className="home">
-      {/* Hero Section - Full Height */}
-      <section className="hero-section">
-        <div className="hero-container">
+      {/* Hero Section with Parallax */}
+      <motion.section 
+        className="hero-section"
+        style={{ y: backgroundY }}
+      >
+        <div className="hero-background">
+          <video 
+            className="hero-video"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/salon-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="hero-overlay"></div>
           <div className="hero-content">
-            <div className="hero-logo">
-              <img src="/szalon-logo.jpg" alt="Healthy Skin Kozmetika Logo" className="salon-logo" />
-            </div>
-            <h1 className="salon-name">Healthy Skin Kozmetika</h1>
+            <motion.div 
+              className="hero-text"
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.h1 variants={fadeInUp} className="hero-title">
+                Healthy Skin Kozmetika
+              </motion.h1>
+              <motion.h2 variants={fadeInUp} className="hero-subtitle">
+                Üdvözöljük az exkluzív szépségélmény világában
+              </motion.h2>
+              <motion.p variants={fadeInUp} className="hero-description">
+                Fedezze fel prémium kozmetikai kezeléseink kínálatát, amelyeket a modern nő igényeire szabtunk
+              </motion.p>
+              <motion.div variants={fadeInUp} className="hero-buttons">
+                <motion.a 
+                  href="tel:+36306345853" 
+                  className="btn btn-custom btn-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Foglaljon időpontot
+                </motion.a>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
-      
+      </motion.section>
+
       {/* LED Treatment Section */}
       <AnimatedSection>
         <section className="treatment-section led-treatment">

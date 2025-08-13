@@ -482,6 +482,89 @@ p {
   box-shadow: 0 0 0 0.2rem rgba(232, 213, 211, 0.25);
 }
 
+/* New Hero Section - Full Height with Logo */
+.hero-section {
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    #f7f3f0 0%, 
+    #f4eddc 50%, 
+    #f1e6dd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.salon-logo {
+  max-width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.salon-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #6d4c4e;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Hero Section */
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 1.5rem;
+  }
+  
+  .salon-logo {
+    max-width: 120px;
+  }
+  
+  .salon-name {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1rem;
+  }
+  
+  .salon-logo {
+    max-width: 100px;
+  }
+  
+  .salon-name {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+}
+
 /* Video Hero Section - Optimized for 16:9 aspect ratio */
 .hero-video-section {
   position: relative;
@@ -2678,24 +2761,297 @@ p {
     margin-bottom: 0.8rem;
   }
   
-  .led-overlay-title {
-    font-size: 2rem;
-    letter-spacing: 2px;
+  /* Hide desktop layout on mobile */
+  .desktop-layout {
+    display: none;
   }
   
-  .led-overlay-subtitle {
-    font-size: 1rem;
+  /* Mobile Treatment Cards */
+  .mobile-treatment-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 
+      0 20px 40px rgba(139, 90, 92, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    transform: translateY(0);
   }
   
-  /* Adjust glassmorphism for mobile */
-  .treatment-info {
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+  .mobile-treatment-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 
+      0 30px 60px rgba(139, 90, 92, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
   
-  .treatment-visual {
+  /* Mobile Card Visual Section */
+  .mobile-card-visual {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .mobile-card-visual .mobile-carousel {
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .mobile-card-visual .treatment-placeholder.mobile-visual {
+    height: 100%;
+    background: linear-gradient(135deg, 
+      rgba(139, 90, 92, 0.8) 0%, 
+      rgba(169, 120, 122, 0.6) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  /* Mobile Card Info Section */
+  .mobile-card-info {
+    padding: 2rem 1.8rem;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .mobile-card-info .treatment-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2c1810;
+    text-align: center;
+  }
+  
+  .mobile-card-info .treatment-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: #544239;
+    text-align: center;
+  }
+  
+  .mobile-card-info .treatment-benefits {
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-card-info .treatment-benefits ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mobile-card-info .treatment-benefits li {
+    font-size: 0.85rem;
+    color: #6b5b52;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    text-align: center;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Mobile Treatment Subtitle */
+  .mobile-card-info .treatment-subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #8b5a5c;
+    font-style: italic;
+  }
+  
+  /* Mobile Benefits Grid Override */
+  .mobile-card-info .benefits-grid {
+    display: block;
+  }
+  
+  .mobile-card-info .treatment-benefits ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  
+  .mobile-card-info .treatment-benefits li {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 0.4rem;
+  }
+  
+  .mobile-card-info .benefit-item {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .mobile-card-info .benefit-item strong {
+    font-size: 0.85rem;
+  }
+  
+  .mobile-card-info .benefit-item p {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+  
+  /* Mobile LED Overlay Adjustments */
+  .mobile-overlay {
+    bottom: 1rem;
+  }
+  
+  .mobile-overlay .led-overlay-title {
+    font-size: 1.2rem;
+  }
+  
+  .mobile-overlay .led-overlay-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* Enhanced LED Treatment Styles */
+.treatment-subtitle {
+  font-size: 1.1rem;
+  color: #8b5a5c;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.benefit-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.benefit-item strong {
+  display: block;
+  color: #2c1810;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.benefit-item p {
+  font-size: 0.85rem;
+  color: #544239;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.led-tech-specs {
+  background: rgba(139, 90, 92, 0.1);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 90, 92, 0.2);
+}
+
+.led-tech-specs h4 {
+  color: #8b5a5c;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.led-tech-specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.led-tech-specs li {
+  padding: 0.5rem 0;
+  color: #544239;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(139, 90, 92, 0.1);
+}
+
+.led-tech-specs li:last-child {
+  border-bottom: none;
+}
+
+/* Enhanced GENO-LED Title */
+.geno-led-big {
+  font-size: 2.8rem !important;
+  font-weight: 700 !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+  letter-spacing: 3px !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Mobile GENO-LED Title */
+.mobile-overlay .geno-led-big {
+  font-size: 2.2rem !important;
+  letter-spacing: 2px !important;
+}
+
+/* Desktop Styles - Show desktop layout, hide mobile cards */
+@media (min-width: 769px) {
+  .desktop-layout {
+    display: grid !important;
+  }
+  
+  .mobile-treatment-card {
+    display: none;
+  }
+  
+  /* Desktop LED Treatment Responsive Adjustments */
+  .benefits-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .led-tech-specs {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Tablet Responsive Adjustments */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .benefit-item {
+    padding: 0.8rem;
+  }
+  
+  .led-tech-specs {
+    padding: 1.2rem;
+  }
+  
+  .treatment-subtitle {
+    font-size: 1rem;
   }
 }
 
@@ -3024,4 +3380,287 @@ html {
   .treatment-description {
     font-size: 0.95rem;
   }
+}
+
+/* LED Image Grid for Desktop - Modern Layout */
+.led-image-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1.2fr;
+  gap: 12px;
+  padding: 16px;
+  position: relative;
+}
+
+.grid-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid-bottom {
+  position: relative;
+}
+
+.grid-image-small {
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+.grid-image-small:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 15px 45px rgba(31, 38, 135, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.grid-image-large {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.4);
+}
+
+.grid-image-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(31, 38, 135, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.led-treatment-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.grid-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 30px 25px 25px;
+  border-radius: 0 0 24px 24px;
+}
+
+.grid-title {
+  color: #ff4757;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.grid-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Grid Control */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-only {
+    display: block !important;
+  }
+  
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* GENOSYS Micro Needling Treatment Styles */
+.microneedle-image-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1.2fr;
+  gap: 12px;
+  padding: 16px;
+  position: relative;
+}
+
+.microneedle-image-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px rgba(139, 90, 92, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.microneedle-image-carousel:hover {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 
+    0 35px 70px rgba(139, 90, 92, 0.25),
+    0 0 0 1px rgba(139, 90, 92, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.microneedle-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.microneedle-carousel-slide.active {
+  opacity: 1;
+}
+
+.microneedle-treatment-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.microneedle-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  z-index: 5;
+  transition: all 0.4s ease;
+}
+
+.microneedle-image-carousel:hover .microneedle-text-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.microneedle-overlay-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  color: #ff4757;
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+
+.microneedle-image-carousel:hover .microneedle-overlay-title {
+  transform: translateY(-5px) scale(1.05);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+.microneedle-overlay-subtitle {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+  transition: all 0.4s ease 0.1s;
+  transform: translateY(0);
+}
+
+.microneedle-image-carousel:hover .microneedle-overlay-subtitle {
+  transform: translateY(5px);
+  opacity: 1;
+}
+
+.microneedle-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  z-index: 10;
+}
+
+.microneedle-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.microneedle-indicator.active {
+  background: #ff4757;
+  transform: scale(1.2);
+}
+
+.microneedle-indicator:hover {
+  background: rgba(255, 71, 87, 0.8);
+  transform: scale(1.1);
+}
+
+.genosys-big {
+  color: #ff4757 !important;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+}
+
+.mobile-overlay .genosys-big {
+  font-size: 2rem !important;
+  letter-spacing: 2px !important;
+}
+
+/* Treatment Section Styling for Micro Needling */
+.microneedle-treatment {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+  border-bottom: 3px solid rgba(0, 123, 255, 0.1);
 }
