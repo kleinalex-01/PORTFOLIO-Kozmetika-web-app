@@ -487,14 +487,42 @@ p {
   height: 100vh;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 15vh;
   background: linear-gradient(135deg, 
     #f7f3f0 0%, 
     #f4eddc 50%, 
     #f1e6dd 100%);
-  position: relative;
-  overflow: hidden;
+  margin-top: -3rem;
+}
+
+.hero-video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
 .hero-container {
@@ -502,36 +530,48 @@ p {
   max-width: 1200px;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
+  width: 100%;
+  text-align: center;
 }
 
 .hero-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .salon-logo {
   max-width: 150px;
   height: auto;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  display: block;
+  margin: 0 auto;
 }
 
 .salon-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 4rem;
   font-weight: 700;
-  color: #6d4c4e;
+  color: #ffffff;
   margin: 0;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  width: 100%;
 }
 
 /* Responsive Hero Section */
@@ -3077,6 +3117,19 @@ p {
 .loading-content {
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loading-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .loading-logo .salon-logo {
@@ -3085,6 +3138,8 @@ p {
   margin: 0;
   letter-spacing: 2px;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
 }
 
 .loading-logo .salon-tagline {
@@ -3093,6 +3148,8 @@ p {
   margin: 0.5rem 0 2rem 0;
   opacity: 0.9;
   letter-spacing: 1px;
+  text-align: center;
+  width: 100%;
 }
 
 .loading-bar-container {

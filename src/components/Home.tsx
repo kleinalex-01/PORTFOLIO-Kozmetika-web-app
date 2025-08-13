@@ -37,8 +37,21 @@ const Home: React.FC = () => {
 
   return (
     <div className="home">
-      {/* Hero Section - Full Height */}
+      {/* Hero Section - Full Height with Video Background */}
       <section className="hero-section">
+        <div className="hero-video-background">
+          <video 
+            className="hero-video"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/szalon-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="hero-overlay"></div>
+        </div>
         <div className="hero-container">
           <div className="hero-content">
             <div className="hero-logo">
